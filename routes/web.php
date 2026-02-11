@@ -18,12 +18,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Route untuk Manajemen Produk (Poin 3 & 4)
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::resource('products', ProductController::class);
     
-    // Jika Anda ingin CRUD lengkap secara instan untuk Category:
-    // Route::resource('categories', CategoryController::class); 
+    Route::resource('categories', CategoryController::class);
+});
+
+Route::get('/api-test/products', function() {
+    return \App\Models\Product::with('category')->get();
 });
 
 require __DIR__.'/auth.php';

@@ -14,8 +14,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="md:col-span-1">
+                            @if($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full rounded-xl shadow-md border">
+                            @else
+                                <div class="w-full aspect-square bg-gray-100 flex items-center justify-center rounded-xl border text-gray-400">
+                                    Tidak ada foto
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
                             <h3 class="text-lg font-bold mb-4 border-b pb-2">Informasi Produk</h3>
                             <div class="space-y-3">
                                 <div>
