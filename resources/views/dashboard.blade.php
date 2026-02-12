@@ -33,7 +33,7 @@
                     if(request('category')) {
                         $query->where('category_id', request('category'));
                     }
-                    $products = $query->take(8)->get();
+                    $products = $query->get();
                 @endphp
 
                 @forelse ($products as $product)
