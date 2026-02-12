@@ -2,6 +2,9 @@
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
+Route::apiResource('products', ProductController::class);
 
 Route::get('/list-produk', function () {
     return response()->json([
